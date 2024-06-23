@@ -1,0 +1,10 @@
+<div class="magic-box" [attr.id]="box.id" [ngStyle]="{ 'border-color': box.type }">
+  <form (ngSubmit)="onFormSubmit()">
+    <div *ngFor="let field of getFields()">
+      <label>{{ field }}</label>
+      <input [(ngModel)]="box.fields[field]" name="{{ field }}" />
+    </div>
+    <button type="button" (click)="deleteBox()">Delete</button>
+    <button type="submit">Update</button>
+  </form>
+</div>

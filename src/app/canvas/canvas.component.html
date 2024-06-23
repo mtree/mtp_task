@@ -1,0 +1,16 @@
+<div class="controls">
+  <label for="boxType">Select Box Type: </label>
+  <select id="boxType" [(ngModel)]="newBoxType">
+    <option *ngFor="let type of boxTypeKeys()" [ngValue]="type">{{ type }}</option>
+  </select>
+  <button (click)="addBox()">Add Box</button>
+</div>
+<div class="canvas" #canvas>
+  <app-magic-box
+    *ngFor="let box of boxes"
+    [box]="box"
+    (boxChange)="onBoxChange($event)"
+    (boxDelete)="deleteBox(box.id)"
+    (boxConnect)="connectBoxes($event)"
+  ></app-magic-box>
+</div>
